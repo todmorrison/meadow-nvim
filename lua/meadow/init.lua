@@ -21,8 +21,8 @@ function meadow.log(msg, hl)
 end
 
 local function fix_value(value)
-    if value < 0 then return 0 end
-    if value > 100 then return 100 end
+    if tonumber(value) < 0 then return 0 end
+    if tonumber(value) > 100 then return 100 end
     return value
 end
 
@@ -132,7 +132,7 @@ meadow.NvimColors = {
     MsgSeparator = { bg = c.GreyBg[1] },
     MoreMsg = { fg = c.Green[2] },
     NonText = { fg = c.Grey[1] },
-    Normal = { fg = c.White[1], bg = c.Black[2] },
+    Normal = { fg = c.Green[1], bg = c.Black[2] },
     NormalFloat = { fg = c.White[1], bg = c.GreyBg[1] },
     NormalNC = { link = 'Normal' },
     Pmenu = { fg = c.White[1], bg = c.GreyBg[1] },
@@ -161,7 +161,7 @@ meadow.NvimColors = {
     Visual = { bg = c.Violet[1] },
     VisualNOS = { link = 'Visual' },
     WarningMsg = { bg = c.Yellow[1] },
-    Whitespace = { fg = c.White[1], bg = c.Orange[1] },
+    Whitespace = { fg = c.White[1], bg = c.Black[2] },
     WildMenu = { link = 'PmenuSel' },
 
     Debug = { bg = c.Red[2] },
