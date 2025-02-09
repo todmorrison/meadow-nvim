@@ -4,12 +4,12 @@ local make_highlights = function(c)
   -- The list of higlights and comments were originally taken from https://github.com/folke/tokyonight.nvim and then modified.
   local highlights = {
     Comment = { fg = c.grey },               -- any comment
-    ColorColumn = { bg = c.grey_bg1 },       -- used for the columns set with 'colorcolumn'
+    ColorColumn = { bg = 'NONE' },       -- used for the columns set with 'colorcolumn'
     Conceal = { fg = c.white }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor = { reverse = true },             -- character under the cursor
     lCursor = { link = 'Cursor' },           -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM = { link = 'Cursor' },          -- like Cursor, but used when in IME mode |CursorIM|
-    CursorColumn = { bg = c.grey_bg1 }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorColumn = { bg = 'NONE' }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine = { link = 'CursorColumn' },  -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
     Directory = { fg = c.blue1 },            -- directory names (and other special names in listings)
     DiffAdd = { bg = c.green2 },             -- diff mode: Added line |diff.txt|
@@ -19,31 +19,31 @@ local make_highlights = function(c)
     EndOfBuffer = { link = 'Normal' },       -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor  = {}, -- cursor in a focused terminal
     -- TermCursorNC= {}, -- cursor in an unfocused terminal
-    ErrorMsg = { fg = c.red1, bg = c.black1 },                     -- error messages on the command line
+    ErrorMsg = { fg = c.red1, bg = 'NONE' },                     -- error messages on the command line
     VertSplit = { fg = c.grey },                                   -- the column separating vertically split windows
     WinSeparator = { fg = c.grey },                                -- the column separating vertically split windows
-    Folded = { bg = c.grey_bg2 },                                  -- line used for closed folds
-    FoldColumn = { bg = c.grey_bg2 },                              -- 'foldcolumn'
-    SignColumn = { bg = c.black3 },                                -- column where |signs| are displayed
+    Folded = { bg = 'NONE' },                                  -- line used for closed folds
+    FoldColumn = { bg = 'NONE' },                              -- 'foldcolumn'
+    SignColumn = { bg = 'NONE' },                                -- column where |signs| are displayed
     SignColumnSB = { fg = c.violet },                              -- column where |signs| are displayed
     Substitute = { bg = c.yellow2 },                               -- |:substitute| replacement text highlighting
-    LineNr = { fg = c.grey, bg = c.black3 },                       -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr = { fg = c.yellow1, bg = c.black3, bold = true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    LineNr = { fg = c.grey, bg = 'NONE' },                       -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr = { fg = c.yellow1, bg = 'NONE', bold = true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     MatchParen = { bg = c.yellow1, bold = true },                  -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg = { link = 'Normal' },                                 -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea = { link = 'Normal' },                                 -- Area for messages and cmdline
     MsgSeparator = { link = 'LineNr' },                            -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg = { fg = c.green2 },                                   -- |more-prompt|
     NonText = { fg = c.grey },                                     -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Normal = { fg = c.white, bg = c.black3 },                      -- normal text
+    Normal = { fg = c.green1, bg = 'NONE' },                      -- normal text
     NormalNC = { link = 'Normal' },                                -- normal text in non-current windows
     NormalSB = { link = 'Normal' },                                -- normal text in sidebar
-    NormalFloat = { fg = c.white, bg = c.grey_bg1 },                             -- Normal text in floating windows.
+    NormalFloat = { fg = c.white, bg = 'NONE' },                             -- Normal text in floating windows.
     FloatBorder = { fg = c.grey },
     FloatTitle = { link = 'Title' },
-    Pmenu = { fg = c.white, bg = c.grey_bg1 },                  -- Popup menu: normal item. menu
-    PmenuSel = { fg = c.green2, bg = c.grey_bg2, bold = true }, -- Popup menu: selected item.
-    PmenuSbar = { bg = c.grey_bg2 },                            -- Popup menu: scrollbar.
+    Pmenu = { fg = c.white, bg = 'NONE' },                  -- Popup menu: normal item. menu
+    PmenuSel = { fg = c.green2, bg = 'NONE', bold = true }, -- Popup menu: selected item.
+    PmenuSbar = { bg = 'NONE' },                            -- Popup menu: scrollbar.
     PmenuThumb = { bg = c.white },                              -- Popup menu: Thumb of the scrollbar.
     Question = { link = 'MoreMsg' },                            -- |hit-enter| prompt and yes/no questions
     QuickFixLine = { bold = true },                             -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
@@ -55,8 +55,8 @@ local make_highlights = function(c)
     SpellCap = { link = 'SpellBad' },                           -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     SpellLocal = { link = 'SpellBad' },                         -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     SpellRare = { link = 'SpellBad' },                          -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-    StatusLine = { fg = c.white, bg = c.black2 },               -- status line of current window
-    StatusLineNC = { fg = c.grey, bg = c.black2 },          -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine = { fg = c.white, bg = 'NONE' },               -- status line of current window
+    StatusLineNC = { fg = c.grey, bg = 'NONE' },          -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine = { fg = c.white, bg = c.black4 },                  -- tab pages line, not active tab page label
     TabLineFill = { fg = c.green2, bg = c.black4 },             -- tab pages line, where there are no labels
     TabLineSel = { fg = c.green2, bold = true },                -- tab pages line, active tab page label
@@ -378,16 +378,16 @@ local make_highlights = function(c)
     NeogitHunkHeader = { fg = c.blue1, bold = true },
     NeogitDiffAdd = { fg = c.white, bg = c.green1 },
     NeogitDiffDelete = { fg = c.white, bg = c.red1 },
-    NeogitDiffContext = { bg = c.black3 },
+    NeogitDiffContext = { bg = 'NONE' },
     NeogitDiffHeader = { bg = c.blue3 },
 
-    NeogitHunkHeaderHighlight = { fg = c.blue1, bg = c.grey_bg2 },
+    NeogitHunkHeaderHighlight = { fg = c.blue1, bg = 'NONE' },
     NeogitDiffContextHighlight = { link = 'NeogitDiffContext' },
     NeogitDiffAddHighlight = { link = 'NeogitDiffAdd' },
     NeogitDiffDeleteHighlight = { link = 'NeogitDiffDelete' },
     NeogitDiffHeaderHighlight = { link = 'NeogitDiffHeader' },
 
-    NeogitCursorLine = { bg = c.grey_bg2 },
+    NeogitCursorLine = { bg = 'NONE' },
 
     -- ChatGPT.nvim
     ChatGPTQuestion = { fg = c.green1 },
